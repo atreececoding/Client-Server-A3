@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+    <!-- Container with the links to the tabs -->
     <div class="container mainContainer">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -43,6 +43,7 @@
             </li>
         </ul>
 
+        <!-- Content of the tabs -->
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
                 <h2>Welcome to my app! Here you can learn, and calculate, information about physics</h2>
@@ -116,7 +117,7 @@
                     <div id="ECDescription">
                         <div id=ECInfo>
                             <p>
-                                <!-- <br>p = m<sub>1</sub>v<sub>1</sub> = m<sub>2</sub>v<sub>2</sub>. -->
+                                
                                 A totally elastic collision between objects is one where the objects
                                 do not lose any kinetic energy (the energy is conserved) through the entire
                                 collision. In these collisions, all of the energy from the first object is
@@ -202,7 +203,6 @@
                     <div id="ECDescription">
                         <div id=ECInfo>
                             <p>
-                                <!-- <br>p = m<sub>1</sub>v<sub>1</sub> = m<sub>2</sub>v<sub>2</sub>. -->
                                 A totally inelastic collision between objects is one where the objects
                                 lose kinetic energy as internal energy when they collide.
                                 In these collisions, the first and second object stick together
@@ -322,6 +322,9 @@
         </div>
     </div>
     <script>
+        /*
+        * Post and Get events for the Newtonian force calculations
+        */
         $("#submitForce").click(async function getResults() {
             var mass = parseFloat($("#Mass").val().trim());
             var acceleration = parseFloat($("#acceleration").val().trim());
@@ -338,9 +341,6 @@
                     return;
                 }
             }
-            console.log(mass);
-            console.log(acceleration);
-            console.log(angle);
             const url = `http://localhost:3000/force`;
             const response = await fetch(url, {
                 method: 'get',
@@ -353,11 +353,13 @@
                 return;
             }
             const responseData = await response.json();
-            console.log(responseData);
             $("#forceResults").append("<br>");
             $("#forceResults").append("<h3>The force calculated is: " + responseData.result + "N" + "</h3>");
         });
 
+        /*
+        * Post and Get events for the elastic collisions calculations
+        */
         $("#submitElasticCollision").click(async function getResults() {
             var v1i = parseFloat($("#v1i").val().trim());
             var m1i = parseFloat($("#m1i").val().trim());
@@ -394,11 +396,13 @@
                 return;
             }
             const responseData = await response.json();
-            console.log(responseData);
             $("#ECResults").append("<br>");
             $("#ECResults").append("<h3>The total momentum calculated is: " + responseData.result + "Kgm/s" + "</h3>");
         });
 
+        /*
+        * Post and Get events for the inelastic collisions calculations
+        */
         $("#submitInelasticCollision").click(async function getResults() {
             var v1 = parseFloat($("#INv1").val().trim());
             var m1 = parseFloat($("#INm1").val().trim());
@@ -431,10 +435,12 @@
                 return;
             }
             const responseData = await response.json();
-            console.log(responseData);
             $("#INECResults").append("<br>");
             $("#INECResults").append("<h3>The total momentum calculated is: " + responseData.result + "Kgm/s" + "</h3>");
         });
+         /*
+        * Post and Get events for the gravitational force calculations
+        */
         $("#gravitySubmit").click(async function getResults() {
             var m1 = parseFloat($("#gravitym1").val().trim());
             var m2 = parseFloat($("#gravitym2").val().trim());
@@ -465,7 +471,6 @@
                 return;
             }
             const responseData = await response.json();
-            console.log(responseData);
             $("#gravityResults").append("<br>");
             $("#gravityResults").append("<h3>The gravitational force is: " + responseData.result + "N" + "</h3>");
         });

@@ -83,7 +83,6 @@ app.post('/force', function (req, res) {
             return;
         }
     }
-    console.log(data);
     fm1 = parseFloat(data.Mass);
     acceleration = parseFloat(data.acceleration);
     angle = parseFloat(data.angle);
@@ -92,7 +91,6 @@ app.post('/force', function (req, res) {
     }
     else
     force = fm1 * gravity * Math.sin(angle);
-    console.log(force);
 });
 
 /*
@@ -123,7 +121,6 @@ app.post('/elastic-collisions', function(req, res) {
     ECV2f = data.v2f;
 
     totalElasticMomentum = ECV2f * ECM2i + ECV1f * ECM1i;
-    console.log(totalElasticMomentum);
     
 });
 
@@ -140,7 +137,6 @@ app.get('/elastic-collisions', function(req, res) {
 app.post('/inelastic-collisions', function(req, res) {
     data = req.body;
     res.send(data);
-    console.log(data);
     for(var i = 0; i < data.length; i++) {
         if (data[i] === undefined || data[i] === "" || isNaN(data[i])) {
             alert("Please enter only valid values");
@@ -167,7 +163,6 @@ app.get('/inelastic-collisions', function(req, res) {
 app.post('/gravity', function(req, res) {
     data = req.body;
     res.send(data);
-    console.log(data);
     for(var i = 0; i < data.length; i++) {
         if (data[i] === undefined || data[i] === "" || isNaN(data[i])) {
             alert("Please enter only valid values");
