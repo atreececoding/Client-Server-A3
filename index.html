@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-theme.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Physics</title>
+</head>
+
+<body>
+
+    <div class="container mainContainer">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                    aria-selected="true">Home</a>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="force-tab" data-toggle="tab" href="#force" role="tab" aria-controls="force"
+                    aria-selected="true">Force</a>
+            </li>
+
+
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="elasticcollisions-tab" data-toggle="tab" href="#elasticcollisions" role="tab"
+                    aria-controls="elasticcollisions" aria-selected="true">Elastic collisions</a>
+            </li>
+
+
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="inelasticcollisions-tab" data-toggle="tab" href="#inelasticcollisions"
+                    role="tab" aria-controls="inelasticcollisions" aria-selected="true">Inelastic collisions</a>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="gravity-tab" data-toggle="tab" href="#gravity" role="tab"
+                    aria-controls="gravity" aria-selected="true">Gravity</a>
+            </li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
+                <h2>Welcome to my app! Here you can learn, and calculate, information about physics</h2>
+                <p>Please use the tabs to explore each topic and to calculate information about each topic</p>
+            </div>
+            <div class="tab-pane fade show " id="force" role="tabpanel" aria-labelledby="force-tab">
+                <div id="force">
+                    <h3>Newtonian Force: </h3>
+                    <hr>
+                    <div id="force-content">
+                        <div id="forceDivInfo">
+                            <p>
+                                In Newtonian mechanics, the force of an object is calculated using
+                                the equation F=MA, or Force = Mass x Acceleration. These are generally represented
+                                with a force vector on a graph or on an object. To calculate force up an incline,
+                                use mass * gravity * sin(angle) or mg*sin(angle). The pictures below show examples of
+                                such vectors:
+                            </p>
+                            <p>Force vectors on standard object:</p>
+                            <img src="./images/forceVector.png">
+                            <p>Net force vector on an inclined box: </p>
+                            <img src="./images/boxVector.jpg">
+                        </div>
+                        <div id="forceDivForm">
+                            <p>Please enter information to see a force calculation result: </p>
+                            <form method="POST">
+                                <div>
+                                    <table id="forcetable">
+                                        <tr>
+                                            <td>Mass(in Kg):</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" id="Mass" class="form-control" name="Mass"
+                                                    placeholder="6"></input></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Acceleration(in M/s<sup>2</sup>): </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" id="acceleration" class="form-control"
+                                                    name="acceleration" placeholder="13.2"></input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Angle (in radians, 0 for flat surface): </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" id="angle" class="form-control" name="angle"
+                                                    placeholder="0"></input>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <button id="submitForce" type="button">Calculate force</button>
+                                </div>
+                            </form>
+                            <div id="forceResults">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="elasticcollisions" role="tabpanel"
+                aria-labelledby="elasticcollisions-tab">
+                <div id="ElasticContent">
+                    <h3>Elastic Collisions:</h3>
+                    <hr>
+                    <div id="ECDescription">
+                        <div id=ECInfo>
+                            <p>
+                                <!-- <br>p = m<sub>1</sub>v<sub>1</sub> = m<sub>2</sub>v<sub>2</sub>. -->
+                                A totally elastic collision between objects is one where the objects
+                                do not lose any kinetic energy (the energy is conserved) through the entire
+                                collision. In these collisions, all of the energy from the first object is
+                                transferred to the second object, and the first object moves in the complete
+                                opposite direction.
+                                to calculate these values, we can use the conservation of momentum(p). <br>
+                                m<sub>1i</sub>v<sub>1i</sub> + m<sub>2i</sub>v<sub>2i</sub> =
+                                m<sub>1f</sub>v<sub>1f</sub> + m<sub>2f</sub>v<sub>2f</sub>
+                            </p>
+                        </div>
+                        <div>
+                            <img src="./images/ECD1.png">
+                            <img src="./images/ECD2.png">
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="ECCalcs">
+                        <div id="ECTableDiv">
+                            <p>Please enter the following to calculate information about elastic collisions
+                                (type NA for missing value): </p>
+                            <form method="POST">
+                                <table id="elasticCollisionTable">
+                                    <tr>
+                                        <td>Initial velocity of object 1 (m/s)</td>
+                                        <td>Initial mass of object 1 (Kg)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" id="v1i" class="form-controlE" placeholder="0"></input>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="m1i" class="form-controlE" placeholder="0"></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Initial velocity of object 2</td>
+                                        <td>Initial mass of object 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" id="v2i" class="form-controlE" placeholder="0"></input>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="m2i" class="form-controlE" placeholder="0"></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Final velocity of object 1 (m/s)</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" id="v1f" class="form-controlE" placeholder="0"></input>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Final velocity of object 2</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" id="v2f" class="form-controlE" placeholder="0"></input>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                                <br>
+                                <button id="submitElasticCollision" type="button">Calculate result momentum</button>
+                            </form>
+                        </div>
+                        <div id="ECResults">
+                            <p>Results: </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="inelasticcollisions" role="tabpanel"
+                aria-labelledby="inelasticcollisions-tab">
+                <div id="InelasticContent">
+                    <h3>Inelastic Collisions:</h3>
+                    <hr>
+                    <div id="ECDescription">
+                        <div id=ECInfo>
+                            <p>
+                                <!-- <br>p = m<sub>1</sub>v<sub>1</sub> = m<sub>2</sub>v<sub>2</sub>. -->
+                                A totally inelastic collision between objects is one where the objects
+                                lose kinetic energy as internal energy when they collide.
+                                In these collisions, the first and second object stick together
+                                sharing all of the kinetic energy in the first object.
+                                to calculate these values, we can use the conservation of momentum(p). <br>
+                                m<sub>1</sub>v<sub>1</sub> = (m<sub>1</sub> + m<sub>2</sub>)v<sub>2</sub>
+                            </p>
+                        </div>
+                        <div id="INimg">
+                            <img id="INECD1" src="./images/INECD1.png">
+                            <img src="./images/INECD2.png">
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="ECCalcs">
+                        <div id="ECTableDiv">
+                            <p>Please enter the following to calculate information about elastic collisions
+                                (type NA for missing value): </p>
+                            <form method="POST">
+                                <table id="elasticCollisionTable">
+                                    <tr>
+                                        <td>velocity of object 1 (m/s)</td>
+                                        <td>mass of object 1 (Kg)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" id="INv1" class="form-controlE" placeholder="0"></input>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="INm1" class="form-controlE" placeholder="0"></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>velocity of object 2</td>
+                                        <td>mass of object 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" id="INv2" class="form-controlE" placeholder="0"></input>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="INm2" class="form-controlE" placeholder="0"></input>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br>
+                                <button id="submitInelasticCollision" type="button">Calculate result momentum</button>
+                            </form>
+                        </div>
+                        <div id="INECResults">
+                            <p>Results: </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show " id="gravity" role="tabpanel" aria-labelledby="gravity-tab">
+                <div id="gravityContent">
+                    <h3>Gravity:</h3>
+                    <hr>
+                    <div id="gravityInfo">
+                        <div id="gravityCalcs">
+                            <form method="POST">
+                                <p>Please enter the following to calculate the force of gravity: </p>
+                                <table>
+                                    <tr>
+                                        <td>Mass of object 1 (Kg)</td>
+                                        <td>Mass of object 2 (Kg)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input class="gravityTexts" type="text" id="gravitym1" class="form-controlE"
+                                                placeholder="0"></input>
+                                        </td>
+                                        <td>
+                                            <input class="gravityTexts" type="text" id="gravitym2" class="form-controlE"
+                                                placeholder="0"></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>The distance between objects (M)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="gravityTexts" type="text" id="gravitydistance"
+                                                class="form-controlE" placeholder="0"></input></td>
+                                    </tr>
+                                </table>
+                                <br>
+                                <button type="button" id="gravitySubmit"> Calculate force of gravity </button>
+                            </form>
+                            <div id="gravityResults">
+                                <br>
+                                <p>Results: </p>
+                            </div>
+                        </div>
+                        <div id="gravityDescription">
+                            <p>
+                                In Newtonian mechanics, gravity is a simple calculation between two
+                                objects that exist in space. In reality, gravity is a field created
+                                by all objects with momentum and energy, but to approximate the
+                                force of gravity between two objects, the gravitational force equation
+                                can be used.
+                                <br>
+                            <div class="cmath">
+                                f<sub>g</sub> = \(Gm_1m_2 \over r^2\)
+                            </div>
+                            <br>
+                            Where G is the gravitational constant, m<sub>1</sub> and m<sub>2</sub> are
+                            the masses of the objects, and r<sup>2</sup> is the distance between the two
+                            squared.
+                            </p>
+                            <img id="GravityImg1" src="./images/Gravity1.png">
+                            <img id="GravityImg2" src="./images/Gravity2.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#submitForce").click(async function getResults() {
+            var mass = parseFloat($("#Mass").val().trim());
+            var acceleration = parseFloat($("#acceleration").val().trim());
+            var angle = parseFloat($("#angle").val().trim());
+            $.post(`/force`, {
+                "Mass": mass,
+                "acceleration": acceleration,
+                "angle": angle
+            });
+            var list = [mass, acceleration, angle];
+            for (var i = 0; i < list.length; i++) {
+                if (list[i] === undefined || list[i] === "" || isNaN(list[i])) {
+                    alert("Please enter only valid values");
+                    return;
+                }
+            }
+            console.log(mass);
+            console.log(acceleration);
+            console.log(angle);
+            const url = `http://localhost:3000/force`;
+            const response = await fetch(url, {
+                method: 'get',
+                mode: 'cors',
+                cache: 'no-cache',
+            });
+            //handle invalid symbols
+            if (response.status != "200") {
+                alert("You have entered an invalid symbol");
+                return;
+            }
+            const responseData = await response.json();
+            console.log(responseData);
+            $("#forceResults").append("<br>");
+            $("#forceResults").append("<h3>The force calculated is: " + responseData.result + "N" + "</h3>");
+        });
+
+        $("#submitElasticCollision").click(async function getResults() {
+            var v1i = parseFloat($("#v1i").val().trim());
+            var m1i = parseFloat($("#m1i").val().trim());
+            var v2i = parseFloat($("#v2i").val().trim());
+            var m2i = parseFloat($("#m2i").val().trim());
+            var v1f = parseFloat($("#v1f").val().trim());
+            var v2f = parseFloat($("#v2f").val().trim());
+
+            var list = [v1i, m1i, v2i, m2i, v1f, v2f];
+            for (var i = 0; i < list.length; i++) {
+                if (list[i] === undefined || list[i] === "" || isNaN(list[i])) {
+                    alert("Please enter only valid values");
+                    return;
+                }
+            }
+
+            $.post(`/elastic-collisions`, {
+                "v1i": v1i,
+                "m1i": m1i,
+                "v2i": v2i,
+                "m2i": m2i,
+                "v1f": v1f,
+                "v2f": v2f
+            })
+            const url = `http://localhost:3000/elastic-collisions`;
+            const response = await fetch(url, {
+                method: 'get',
+                mode: 'cors',
+                cache: 'no-cache',
+            });
+            //handle invalid symbols
+            if (response.status != "200") {
+                alert("You have entered an invalid symbol");
+                return;
+            }
+            const responseData = await response.json();
+            console.log(responseData);
+            $("#ECResults").append("<br>");
+            $("#ECResults").append("<h3>The total momentum calculated is: " + responseData.result + "Kgm/s" + "</h3>");
+        });
+
+        $("#submitInelasticCollision").click(async function getResults() {
+            var v1 = parseFloat($("#INv1").val().trim());
+            var m1 = parseFloat($("#INm1").val().trim());
+            var v2 = parseFloat($("#INv2").val().trim());
+            var m2 = parseFloat($("#INm2").val().trim());
+
+            var list = [v1, m1, v2, m2];
+            for (var i = 0; i < list.length; i++) {
+                if (list[i] === undefined || list[i] === "" || isNaN(list[i])) {
+                    alert("Please enter only valid values");
+                    return;
+                }
+            }
+
+            $.post(`/inelastic-collisions`, {
+                "v1": v1,
+                "m1": m1,
+                "v2": v2,
+                "m2": m2,
+            })
+            const url = `http://localhost:3000/Inelastic-collisions`;
+            const response = await fetch(url, {
+                method: 'get',
+                mode: 'cors',
+                cache: 'no-cache',
+            });
+            //handle invalid symbols
+            if (response.status != "200") {
+                alert("You have entered an invalid symbol");
+                return;
+            }
+            const responseData = await response.json();
+            console.log(responseData);
+            $("#INECResults").append("<br>");
+            $("#INECResults").append("<h3>The total momentum calculated is: " + responseData.result + "Kgm/s" + "</h3>");
+        });
+        $("#gravitySubmit").click(async function getResults() {
+            var m1 = parseFloat($("#gravitym1").val().trim());
+            var m2 = parseFloat($("#gravitym2").val().trim());
+            var r = parseFloat($("#gravitydistance").val().trim());
+
+            var list = [m1, m2, r];
+            for (var i = 0; i < list.length; i++) {
+                if (list[i] === undefined || list[i] === "" || isNaN(list[i])) {
+                    alert("Please enter only valid values");
+                    return;
+                }
+            }
+
+            $.post(`/gravity`, {
+                "m1": m1,
+                "m2": m2,
+                "r": r
+            });
+            const url = `http://localhost:3000/gravity`;
+            const response = await fetch(url, {
+                method: 'get',
+                mode: 'cors',
+                cache: 'no-cache',
+            });
+            //handle invalid symbols
+            if (response.status != "200") {
+                alert("You have entered an invalid symbol");
+                return;
+            }
+            const responseData = await response.json();
+            console.log(responseData);
+            $("#gravityResults").append("<br>");
+            $("#gravityResults").append("<h3>The gravitational force is: " + responseData.result + "N" + "</h3>");
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
